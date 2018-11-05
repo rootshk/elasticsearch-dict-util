@@ -1,0 +1,38 @@
+server:
+  port: 8081 #服务端口
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ikdemo #数据库链接
+    username: shopxx #数据库用户名
+    password: shopxx123!@# #数据库密码
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+    show-sql: false
+
+ik:
+  file-switch: false #是否将字典转为JSON保存硬盘
+  file-name:
+    dict: dict #保存的扩展词典文件名 {dict}.json
+    stopwords: stopwords #保存的停用词词典文件名 {stopwords}.json
+  file-path:
+    linuxFilePath: /data/json #文件在linux下的保存路径
+    windowsFilePath: D:/json #文件在windows下的保存路径
